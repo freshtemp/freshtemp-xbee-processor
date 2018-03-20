@@ -6,6 +6,7 @@ include('lookup.php');
 
 include('lookup_ideal.php');
 
+include('config.php');
 
 function connectToDatabase() {
 	$db = new PDO('mysql:host=172.21.2.20;dbname=tempmon;charset=utf8', 'root', 'D1g1Fr3shT3mp');
@@ -362,13 +363,13 @@ function get_sensor_from_sensor_mac($db, $Sensor_MAC) {
 
 
 function process_logs() {
-	if ($handle = opendir('logs/')) {
+	if ($handle = opendir($config['log_dir'])) {
 
 	    while (false !== ($entry = readdir($handle))) {
 
 	        if ($entry != "." && $entry != "..") {
 
-	        	$file = 'logs/' . $entry;
+	        	$file = $config['log_dir'] . $entry;
 
 	        	echo "Processing: $entry\n";
 
