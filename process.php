@@ -362,9 +362,9 @@ function get_sensor_from_sensor_mac($db, $Sensor_MAC) {
 	return $r->fetchObject();
 }
 
-function process_log($fileName) {
+function process_log($log_dir, $fileName) {
 
-	$file = $config['log_dir'] . $fileName;
+	$file = $log_dir . $fileName;
 
 	if(file_exists($file)) {
 
@@ -386,7 +386,7 @@ function process_log($fileName) {
 
 if(isset($argv[1]) && $argv[1]) {
 
-	process_log($argv[1]);
+	process_log($config['log_dir'], $argv[1]);
 
 } else {
 
