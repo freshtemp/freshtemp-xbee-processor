@@ -79,6 +79,8 @@ function process_message($db, $Msg) {
 		//Note:  Mac Address is reported with brackets and an exclaimation point, [00:13:A2:00:41:52:A1:7A]!, we clean this when fetching sensor from the database (see clean_sensor_mac function)
 		$Sensor_MAC							= parse_datapoint_stream($DataPoint, 2);
 
+    echo "Processing: " . $Sensor_MAC . "\n";
+
 		$Sensor_Input_GPIO_Pin	= parse_datapoint_stream($DataPoint, 3);
 
 		//Returns ADC value, should be between 0 - 1023
